@@ -1,8 +1,8 @@
 # Simple C starter (macOS, LLVM tools)
 # Usage:
 #   make                 # build Debug
-#   make run ARGS="5 7"
-#   make lldb ARGS="5 7" # open LLDB with args
+#   make run
+#   make lldb
 #   make release         # optimized build
 #   make asan            # Address/UBSan build
 #   make tidy            # run clang-tidy (if installed)
@@ -12,14 +12,14 @@
 #   make cov cov-run cov-report  # coverage (llvm-cov) (if installed)
 #   make clean
 
-PROJECT       := tmpc
+PROJECT       := oopc
 CC            := clang
 BUILD_DIR     := build
 CONFIG        ?= Debug
 BINDIR        := $(BUILD_DIR)/$(CONFIG)
 OBJDIR        := $(BUILD_DIR)/obj/$(CONFIG)
 
-SRC           := src/main.c src/adder.c src/mp.c
+SRC           := src/main.c src/log_console.c src/log_file.c src/mp.c
 OBJ           := $(patsubst src/%.c,$(OBJDIR)/%.o,$(SRC))
 
 INCLUDES      := -Iinclude
@@ -130,7 +130,7 @@ compile_commands.json:
 	fi
 
 clean:
-	@rm -rf $(BUILD_DIR)
+	@rm -rf $(BUILD_DIR) *.log
 
 help:
 	@echo "Targets:"
