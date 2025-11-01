@@ -3,6 +3,8 @@
 
 #include "log.h"
 
+/* specific to file log */
+
 int filelog_create(logger *impl, char *filename);
 
-#endif // LOG_FILE_H
+#endif  // LOG_FILE_H

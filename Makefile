@@ -89,9 +89,9 @@ tidy:
 	# clang-tidy works best with a compile database; for this small project we pass flags inline
 	@clang-tidy $(SRC) -- $(INCLUDES) $(CFLAGS)
 
-scan:
+scan: clean
 	@command -v scan-build >/dev/null 2>&1 || { echo "scan-build not found"; exit 1; }
-	@scan-build -o $(BUILD_DIR)/scan $(MAKE) clean all
+	@scan-build -o $(BUILD_DIR)/scan $(MAKE) all
 
 # Coverage (LLVM): build with instrumentation, run, then report
 COV_FLAGS := -fprofile-instr-generate -fcoverage-mapping

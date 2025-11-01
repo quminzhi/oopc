@@ -1,6 +1,8 @@
 #ifndef LOG_H
 #define LOG_H
 
+/* log abstraction, interface */
+
 #define ILOG(log, msg) (log)->interface->info(log, msg)
 #define ELOG(log, msg) (log)->interface->error(log, msg)
 
@@ -23,4 +25,4 @@ struct logger_ {
 // only really one implementation of console so extern the impl
 extern logger conlog;
 
-#endif // LOG_H
+#endif  // LOG_H
