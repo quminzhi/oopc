@@ -11,11 +11,12 @@ typedef struct {
 typedef struct {
   char name[20];
   const VTable *vtable;
-} Animal; /* virtual class, user implement virtual functions defined in VTable */
+} Animal; /* virtual class, user implement virtual functions defined in VTable
+           */
 
 Animal createAnimal(char name[], const VTable *vt);
 void sound(Animal *animal);
 void move(Animal *animal);
 void eat(Animal *animal);
 
-#endif // MP_H
+#endif  // MP_H

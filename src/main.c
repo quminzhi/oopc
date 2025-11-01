@@ -84,10 +84,10 @@ int log_main(int argc, char **argv) {
   ELOG(&f1, "Error message 2");
   ELOG(&f2, "Error message 2");
 
+  do_something(&f1);
+
   flog1->close(&f1);
   flog2->close(&f2);
-
-  do_something(&f1);
 
   return 0;
 }
