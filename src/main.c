@@ -68,7 +68,7 @@ int log_main(int argc, char **argv) {
   filelog_create(&f1, "file1.log");
   filelog_create(&f2, "file2.log");
 
-  // shorter usage
+  // shorter usage (optional but not recommand)
   log_interface *flog1 = f1.interface;
   log_interface *flog2 = f2.interface;
 
@@ -77,10 +77,9 @@ int log_main(int argc, char **argv) {
   flog1->error(&f1, "Error message 1");
   flog2->error(&f2, "Error message 1");
 
-  // macro usage
+  // macro usage (recommand)
   ILOG(&f1, "Info message 2");
   ILOG(&f2, "Info message 2");
-
   ELOG(&f1, "Error message 2");
   ELOG(&f2, "Error message 2");
 

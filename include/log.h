@@ -19,7 +19,7 @@ typedef struct log_interface_ {
 // logger struct with data object
 struct logger_ {
   log_interface *interface;
-  void *data;
+  void *data;  // resources implementor may want to allocate or free
 };
 
 // only really one implementation of console so extern the impl

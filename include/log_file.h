@@ -5,7 +5,7 @@
 
 /* specific to file log */
 
-// encapsulate init function
 int filelog_create(logger *impl, char *filename);
+void filelog_destory(logger *impl);
 
 #endif  // LOG_FILE_H
