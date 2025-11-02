@@ -83,7 +83,9 @@ int log_main(int argc, char **argv) {
   ELOG(&f1, "Error message 2");
   ELOG(&f2, "Error message 2");
 
+  // POLYMORPHISM in do_something
   do_something(&f1);
+  do_something(&conlog);
 
   filelog_destory(&f1);
   filelog_destory(&f2);
