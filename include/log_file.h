@@ -5,7 +5,7 @@
 
 /* specific to file log */
 
-int filelog_create(logger *impl, char *filename);
-void filelog_destory(logger *impl);
+int filelog_create(logger *impl, const char *filename);
+void filelog_destroy(logger *impl);
 
 #endif  // LOG_FILE_H

@@ -6,15 +6,17 @@ int console_init(logger *self, void *data) {
   return 0;
 }
 
-void console_info(logger *self, char *str) {
+void console_info(logger *self, const char *str) {
   printf("%s\n", str);
 }
 
-void console_error(logger *self, char *str) {
+void console_error(logger *self, const char *str) {
   fprintf(stderr, "%s\n", str);
 }
 
-void console_close(logger *self) {}
+void console_close(logger *self) {
+  /* console never need closed */
+}
 
 log_interface console_interface = {.init  = console_init,
                                    .info  = console_info,

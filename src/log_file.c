@@ -4,8 +4,8 @@
 #include <errno.h>
 
 int file_init(logger *self, void *data);
-void file_info(logger *self, char *str);
-void file_error(logger *self, char *str);
+void file_info(logger *self, const char *str);
+void file_error(logger *self, const char *str);
 void file_close(logger *self);
 
 log_interface file_interface = {.init  = file_init,
@@ -14,7 +14,7 @@ log_interface file_interface = {.init  = file_init,
                                 .close = file_close};
 
 typedef struct filelog_data_ {
-  char *filename;
+  const char *filename;
   FILE *fd;
 } filelog_data;
 
@@ -31,12 +31,12 @@ int file_init(logger *self, void *data) {
   return 0;
 }
 
-void file_info(logger *self, char *str) {
+void file_info(logger *self, const char *str) {
   filelog_data *fld = self->data;
   fprintf(fld->fd, "INFO :> %s\n", str);
 }
 
-void file_error(logger *self, char *str) {
+void file_error(logger *self, const char *str) {
   filelog_data *fld = self->data;
   fprintf(fld->fd, "ERROR:> %s\n", str);
 }
@@ -48,7 +48,7 @@ void file_close(logger *self) {
 
 // in addition to init log, filelog_create allocate and
 // filelog_destory free resources pointed by data
-int filelog_create(logger *impl, char *filename) {
+int filelog_create(logger *impl, const char *filename) {
   filelog_data *data = malloc(sizeof(filelog_data));
   if (!data) {
     return errno;
@@ -58,7 +58,7 @@ int filelog_create(logger *impl, char *filename) {
   return file_init(impl, data);
 }
 
-void filelog_destory(logger *impl) {
+void filelog_destroy(logger *impl) {
   // close fd first then free fd resource
   file_close(impl);
   filelog_data *data = impl->data;
