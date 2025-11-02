@@ -85,8 +85,8 @@ int log_main(int argc, char **argv) {
 
   do_something(&f1);
 
-  flog1->close(&f1);
-  flog2->close(&f2);
+  filelog_destory(&f1);
+  filelog_destory(&f2);
 
   return 0;
 }

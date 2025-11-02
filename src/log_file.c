@@ -44,7 +44,6 @@ void file_error(logger *self, char *str) {
 void file_close(logger *self) {
   filelog_data *fld = self->data;
   fclose(fld->fd);
-  free(fld);
 }
 
 // in addition to init log, filelog_create allocate and
@@ -60,9 +59,10 @@ int filelog_create(logger *impl, char *filename) {
 }
 
 void filelog_destory(logger *impl) {
+  // close fd first then free fd resource
+  file_close(impl);
   filelog_data *data = impl->data;
   if (data) {
     free(data);
   }
-  file_close(impl);
 }
